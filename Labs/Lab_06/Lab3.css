@@ -1,0 +1,33 @@
+html{
+    background-color: #f2f6fa;
+}
+
+.serif{
+    font-family: Georgia, serif;
+}
+
+table{
+    border: 0.5px solid black;
+}
+
+td{
+    border: 0.5px solid black;
+}
+
+h1{
+    background-color: orange; color: black; text-align: center;
+}
+
+h2{
+    display: table; 
+    background-color: orange; color: black;
+    margin: 0px auto 0px auto;
+}
+
+h3{
+    color: black; text-align: center;
+}
+
+table{
+    background-color:navajowhite;
+}
