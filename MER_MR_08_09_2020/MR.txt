@@ -1,0 +1,62 @@
+Angel Gael Molina Sanchez A01705389
+Edson Armando Vazquez Cruz A01411799
+Fernando Vargas Álvarez A01066270
+Ricardo Arturo Camarena Colón A01703831
+
+Cuenta de cliente(id_cuenta, metodo_pago)
+PK -> id_cuenta
+1,Tarjeta de credito
+
+Orden(id_orden, id_cuenta)
+PK ->
+3, 1
+
+platillos(id_cuenta, platillo)
+PK -> (id_cuenta, platillo)
+FK -> id_cuenta
+3, enchiladas
+
+Repartidores(id_repartidor, direccion_entrega, id_orden)
+PK -> (id_repartidor, id_orden)
+FK -> id_orden
+4, Martires de tacubaya, 3
+
+Reservaciones(id_reservacion, fecha, cliente)
+PK -> id_reservacion
+123123, 08/09/2020, Janet
+
+Cocina(id_cocina, id_orden, id_proveedor, id_estacion)
+PK -> (id_cocina, id_orden, id_proveedor, id_estacion)
+FK -? (id_orden, id_proveedor, id_estacion)
+1,1,2,3
+
+Proveedores(id_proveedor)
+PK-> id_proveedor
+
+Estacion(id_estacion, platillo, id_cocinero)
+PK -> (id_estacion, id_cocinero)
+FK -> id_cocinero
+1, enchiladas, 2
+
+Empleado(id_empleado, salario, categoria, turno, id_orden)
+PK -> (id_empleado, id_orden)
+FK -> id_orden
+1,1
+
+Mesa(id_mesa, id_menu, capacidad)
+PK -> (id_mesa, id_menu)
+FK -> id_menu
+1, 1, 8 personas
+
+Menu(id_menu, id_bebida, id_platillo ,descripcion)
+PK -> (id_menu, id_bebida, id_platillo)
+FK -> (id_bebida, id_platillo)
+1, 1, 1, Son enchiladas verdes
+
+Platillo(id_platillo, tipo, nombre, precio)
+PK -> id_platillo
+1, fuerte, enchiladas, 40
+
+Bebida(id_bebida, tipo, nombre, precio)
+PK -> id_bebida
+1, soda, Coca-Cola, 20
