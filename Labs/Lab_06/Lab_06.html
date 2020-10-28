@@ -1,233 +1,203 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <meta charset="UTF-8">
-        <title>Laboratorio 4</title>
-        <link rel="stylesheet" href="Lab3.css">
-        <style>
-        </style>
-    </head>
-    <body>
-        <h1>Laboratorio 4: Fundamentos de JavaScript</h1>
-        <h2>Un poco de magia</h2>
-        
-        
-        <section>
-            <h3>RETOS DE SCRIPTS</h3>
-            <h4>1: Entrada: un número pedido con un prompt. Salida: Una tabla con los números del 1 al número dado con sus cuadrados y cubos. Utiliza document.write para producir la salida</h4>
-            <button onclick="retoCuadradosYCubos()">Crear tabla</button>
-            <table id="reto1"></table>
-            <br>
-            
-            <!--SCRIPT RETO1------------------------------------------>
-            <script type="text/javascript">
-                function retoCuadradosYCubos(){
-                    var reto1 = document.createElement("TABLE")
-                    var text;
-                    var cuadrado, cubo;
-                    var numero = prompt("Dame un número positivo:", "Por ejemplo un 8 (Si quieres borrar la tabla deja este espacio vacio)");
-                    
-                    if(numero == null || numero == "")
-                    {
-                        var Table = document.getElementById("reto1");
-                        Table.innerHTML = "";
-                    }
-                    
-                    else
-                    {
-                        for(var i = 1; i<=numero;i++)
-                        {
-                            cuadrado = i ** 2;
-                            cubo = i ** 3;
-                            var table = document.getElementById("reto1");
-                            var row = table.insertRow(i-1);
-                            var cell1 = row.insertCell(0);
-                            var cell2 = row.insertCell(1);
-                            cell1.innerHTML = cuadrado;
-                            cell2.innerHTML = cubo;
-                        }
-                        
-                        var row = table.insertRow(0);
+    <meta charset="UTF-8">
+    <title>Laboratorio 4</title>
+    <link rel="stylesheet" href="Lab3.css">
+    <style>
+    </style>
+</head>
+
+<body>
+    <h1>Laboratorio 4: Fundamentos de JavaScript</h1>
+    <h2>Un poco de magia</h2>
+
+
+    <section>
+        <h3>RETOS DE SCRIPTS</h3>
+        <h4>1: Entrada: un número pedido con un prompt. Salida: Una tabla con los números del 1 al número dado con sus cuadrados y cubos. Utiliza document.write para producir la salida</h4>
+        <button onclick="retoCuadradosYCubos()">Crear tabla</button>
+        <table id="reto1"></table>
+        <br>
+
+        <!--SCRIPT RETO1------------------------------------------>
+        <script type="text/javascript">
+            function retoCuadradosYCubos() {
+                var reto1 = document.createElement("TABLE")
+                var text;
+                var cuadrado, cubo;
+                var numero = prompt("Dame un número positivo:", "Por ejemplo un 8 (Si quieres borrar la tabla deja este espacio vacio)");
+
+                if (numero == null || numero == "") {
+                    var Table = document.getElementById("reto1");
+                    Table.innerHTML = "";
+                } else {
+                    for (var i = 1; i <= numero; i++) {
+                        cuadrado = i ** 2;
+                        cubo = i ** 3;
+                        var table = document.getElementById("reto1");
+                        var row = table.insertRow(i - 1);
                         var cell1 = row.insertCell(0);
                         var cell2 = row.insertCell(1);
-                        cell1.innerHTML = "Cuadrados";
-                        cell2.innerHTML = "Cubos";   
+                        cell1.innerHTML = cuadrado;
+                        cell2.innerHTML = cubo;
                     }
+
+                    var row = table.insertRow(0);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    cell1.innerHTML = "Cuadrados";
+                    cell2.innerHTML = "Cubos";
                 }
-            </script>
-            
-            <h4>2: Entrada: Usando un prompt se pide el resultado de la suma de 2 números generados de manera aleatoria. Salida: La página debe indicar si el resultado fue correcto o incorrecto, y el tiempo que tardó el usuario en escribir la respuesta.</h4>
-            <button onclick="testYourMight()">Test your might</button>
-            <h2 id="reto2"></h2>
-            <br>
-            
-            <!--SCRIPT RETO2--------------------------------------->
-            <script type="text/javascript">
-                function testYourMight()
-                {
-                    var rng = new Date().getTime();
-                    var numero1 = Math.round(Math.random() * 100);
-                    var numero2 = Math.round(Math.random() * 100);
-                    var respuesta = numero1 + numero2;
-                    var test = prompt("Cuanto es "+numero1+" + "+numero2+"?", "Escribe aqui tu respuesta");
-                    if (test == respuesta) 
-                    {
-                        var end = new Date().getTime();
-                        var totaltime = end-rng;
-                    document.getElementById("reto2").innerHTML =
-                    "You tested your might! Tardaste "+ totaltime/1000 +" segundos en obtener la respuesta!";
-                    }
-                    
-                    else
-                    {
-                        var end = new Date().getTime();
-                        var totaltime = end-rng;
-                        document.getElementById("reto2").innerHTML =
-                    "Failure!! Tardaste "+ totaltime/1000 +" segundos en contestar.";
-                    }
-                }
-                
-            </script>
-            
-            <h4>3: Función: contador. Parámetros: Un arreglo de números. Regresa: La cantidad de números negativos en el arreglo, la cantidad de 0's, y la cantidad de valores mayores a 0 en el arreglo.</h4>
-            <p>[-79, 0, -83, 88, 0, 0, -14, 62, 0, 84, 63, -1, -96, 0, -17, -74, 43, -22, -85, 2, 68, 0, -98, -51, 25, 30]</p>
-            <button onclick="numContador()">Contar negativos, ceros y positivos</button>
-            
-            <!--SCRIPT RETO3---------------------------------------------->
-            <script type="text/javascript">
-                 function numContador()
-                {
-                     var negativo=0;
-                     var ceros=0;
-                     var positivo=0; 
-                     var i;
-                     var arrRng = [-79, 0, -83, 88, 0, 0, -14, 62, 0, 84, 63, -1, -96, 0, -17, -74, 43, -22, -85, 2, 68, 0, -98, -51, 25, 30]
-                     var arrLen = arrRng.length;
-                        for(i=0; i<arrLen; i++)
-                        {
-                            if(arrRng[i]<0)
-                            {
-                                negativo++;
-                            }
-                            
-                            else if(arrRng[i]>0)
-                            {
-                                positivo++;
-                            }
-                            
-                            else if(arrRng[i]==0)
-                            {
-                                ceros++;
-                            }
-                        
-                    }
-                     alert("Hay "+negativo + " números negativos, "+ ceros + " ceros y "+ positivo +" números positivos en el arreglo.");
-                }
-                
-            </script>
-            
-            <h4>4: Función: promedios. Parámetros: Un arreglo de arreglos de números. Regresa: Un arreglo con los promedios de cada uno de los renglones de la matriz.</h4>
-            <button onclick="matPromedio()">Calcular promedios</button>
-            <p>MatrizA = [1, 2, 3, 4]</p>
-            <p>MatrizB = [40, 40, 40]</p>
-            <p>MatrizC = [13, 26, 12]</p>
-            
-            <!--SCRIPT RETO4------------------------------------------->
-            <script type="text/javascript">
-                function matPromedio(){
-                    var MatrizA = [1, 2, 3, 4];
-                    var MatrizB = [40, 40, 40];
-                    var MatrizC = [13, 26, 12];
-                    var granMatriz = [MatrizA, MatrizB, MatrizC];
-                    var matrizLen;
-                    var suma;
-                    var i;
-                    var j;
-                    var arrlength;
-                    var promedios = [];
-                    matrizLen = granMatriz.length;
-                    for(i= 0; i<matrizLen; i++)
-                    {
-                        suma =0;
-                        arrlength = granMatriz[i].length;
-                            for(j=0; j<arrlength; j++)
-                            {
-                                suma = suma + granMatriz[i][j];
-                            }
-                            promedios.push(suma/arrlength);
-                    }
-                    alert("Los promedios de los arreglos son: "+ promedios);
-                }
-            </script>
-            
-            <h4>5: Función: inverso. Parámetros: Un número. Regresa: El número con sus dígitos en orden inverso.</h4>
-            <button onclick="invertirNum()">Invertir número</button>
-            
-            <!--SCRIPT RETO5------------------------------------------->
-            <script type="text/javascript">
-                function invertirNum()
-                {
-                    var numero = prompt("Introduce un numero");
-                    var numInvertido = parseFloat(numero.split('').reverse().join(''))*Math.sign(numero)
-                    alert(numero+ " invertido es: "+ numInvertido);
-                }
-            </script>
-            
-            <h4>6: Existen varios tipos de carreras que una persona puede elegir, en este caso hay 5 carreras diferentes que una persona le gustan pero no se puede decidir:</h4>
-            <ul>
-                <li>Medicina</li>
-                <li>Fisica</li>
-                <li>Veterinaria</li>
-                <li>Biotecnologias</li>
-                <li>Arquitectura</li>
-            </ul>
-            <h4>Por eso dejo a la magia de la programacion escoger su carrera</h4>
-            <button onclick="sombreroMagico()">Conoce tu futuro</button>
-            
-            <!--SCRIPT RETO6-------------------------------------------->
-            <script type="text/javascript">
-                function sombreroMagico()
-                {
-                    var carrera1 = 0, carrera2 = 1, carrera3 = 2, carrera4 = 3, carrera5 = 4;
-                    var futuro = Math.round(Math.random() * 4);
-                        if(futuro == carrera1)
-                            {
-                                alert("Medicina");
-                            }
-                        else if(futuro == carrera2)
-                            {
-                                alert("Fisica");
-                            }
-                        else if(futuro == carrera3)
-                            {
-                                alert("Veterinaria");
-                            }
-                        else if(futuro == carrera4)
-                            {
-                                alert("Biotecnologias");
-                            }
-                        else
-                            {
-                                alert("Arquitectura");
-                            }
-                }
-            </script>
-            
-        </section>
-        
-        <hr>
+            }
+        </script>
+
+        <h4>2: Entrada: Usando un prompt se pide el resultado de la suma de 2 números generados de manera aleatoria. Salida: La página debe indicar si el resultado fue correcto o incorrecto, y el tiempo que tardó el usuario en escribir la respuesta.</h4>
+        <button onclick="testYourMight()">Test your might</button>
+        <h2 id="reto2"></h2>
         <br>
-        
-        <section>
-        
+
+        <!--SCRIPT RETO2--------------------------------------->
+        <script type="text/javascript">
+            function testYourMight() {
+                var rng = new Date().getTime();
+                var numero1 = Math.round(Math.random() * 100);
+                var numero2 = Math.round(Math.random() * 100);
+                var respuesta = numero1 + numero2;
+                var test = prompt("Cuanto es " + numero1 + " + " + numero2 + "?", "Escribe aqui tu respuesta");
+                if (test == respuesta) {
+                    var end = new Date().getTime();
+                    var totaltime = end - rng;
+                    document.getElementById("reto2").innerHTML =
+                        "You tested your might! Tardaste " + totaltime / 1000 + " segundos en obtener la respuesta!";
+                } else {
+                    var end = new Date().getTime();
+                    var totaltime = end - rng;
+                    document.getElementById("reto2").innerHTML =
+                        "Failure!! Tardaste " + totaltime / 1000 + " segundos en contestar.";
+                }
+            }
+        </script>
+
+        <h4>3: Función: contador. Parámetros: Un arreglo de números. Regresa: La cantidad de números negativos en el arreglo, la cantidad de 0's, y la cantidad de valores mayores a 0 en el arreglo.</h4>
+        <p>[-79, 0, -83, 88, 0, 0, -14, 62, 0, 84, 63, -1, -96, 0, -17, -74, 43, -22, -85, 2, 68, 0, -98, -51, 25, 30]</p>
+        <button onclick="numContador()">Contar negativos, ceros y positivos</button>
+
+        <!--SCRIPT RETO3---------------------------------------------->
+        <script type="text/javascript">
+            function numContador() {
+                var negativo = 0;
+                var ceros = 0;
+                var positivo = 0;
+                var i;
+                var arrRng = [-79, 0, -83, 88, 0, 0, -14, 62, 0, 84, 63, -1, -96, 0, -17, -74, 43, -22, -85, 2, 68, 0, -98, -51, 25, 30]
+                var arrLen = arrRng.length;
+                for (i = 0; i < arrLen; i++) {
+                    if (arrRng[i] < 0) {
+                        negativo++;
+                    } else if (arrRng[i] > 0) {
+                        positivo++;
+                    } else if (arrRng[i] == 0) {
+                        ceros++;
+                    }
+
+                }
+                alert("Hay " + negativo + " números negativos, " + ceros + " ceros y " + positivo + " números positivos en el arreglo.");
+            }
+        </script>
+
+        <h4>4: Función: promedios. Parámetros: Un arreglo de arreglos de números. Regresa: Un arreglo con los promedios de cada uno de los renglones de la matriz.</h4>
+        <button onclick="matPromedio()">Calcular promedios</button>
+        <p>MatrizA = [1, 2, 3, 4]</p>
+        <p>MatrizB = [40, 40, 40]</p>
+        <p>MatrizC = [13, 26, 12]</p>
+
+        <!--SCRIPT RETO4------------------------------------------->
+        <script type="text/javascript">
+            function matPromedio() {
+                var MatrizA = [1, 2, 3, 4];
+                var MatrizB = [40, 40, 40];
+                var MatrizC = [13, 26, 12];
+                var granMatriz = [MatrizA, MatrizB, MatrizC];
+                var matrizLen;
+                var suma;
+                var i;
+                var j;
+                var arrlength;
+                var promedios = [];
+                matrizLen = granMatriz.length;
+                for (i = 0; i < matrizLen; i++) {
+                    suma = 0;
+                    arrlength = granMatriz[i].length;
+                    for (j = 0; j < arrlength; j++) {
+                        suma = suma + granMatriz[i][j];
+                    }
+                    promedios.push(suma / arrlength);
+                }
+                alert("Los promedios de los arreglos son: " + promedios);
+            }
+        </script>
+
+        <h4>5: Función: inverso. Parámetros: Un número. Regresa: El número con sus dígitos en orden inverso.</h4>
+        <button onclick="invertirNum()">Invertir número</button>
+
+        <!--SCRIPT RETO5------------------------------------------->
+        <script type="text/javascript">
+            function invertirNum() {
+                var numero = prompt("Introduce un numero");
+                var numInvertido = parseFloat(numero.split('').reverse().join('')) * Math.sign(numero)
+                alert(numero + " invertido es: " + numInvertido);
+            }
+        </script>
+
+        <h4>6: Existen varios tipos de carreras que una persona puede elegir, en este caso hay 5 carreras diferentes que una persona le gustan pero no se puede decidir:</h4>
+        <ul>
+            <li>Medicina</li>
+            <li>Fisica</li>
+            <li>Veterinaria</li>
+            <li>Biotecnologias</li>
+            <li>Arquitectura</li>
+        </ul>
+        <h4>Por eso dejo a la magia de la programacion escoger su carrera</h4>
+        <button onclick="sombreroMagico()">Conoce tu futuro</button>
+
+        <!--SCRIPT RETO6-------------------------------------------->
+        <script type="text/javascript">
+            function sombreroMagico() {
+                var carrera1 = 0,
+                    carrera2 = 1,
+                    carrera3 = 2,
+                    carrera4 = 3,
+                    carrera5 = 4;
+                var futuro = Math.round(Math.random() * 4);
+                if (futuro == carrera1) {
+                    alert("Medicina");
+                } else if (futuro == carrera2) {
+                    alert("Fisica");
+                } else if (futuro == carrera3) {
+                    alert("Veterinaria");
+                } else if (futuro == carrera4) {
+                    alert("Biotecnologias");
+                } else {
+                    alert("Arquitectura");
+                }
+            }
+        </script>
+
+    </section>
+
+    <hr>
+    <br>
+
+    <section>
+
         <h2>Preguntas a responder</h2>
-            <h4>¿Cuáles son las diferencias entre los posibles valores de la propiedad position?</h4>
-            
-            <h4>¿Cuáles son los valores estándar para la propiedad visibility?</h4>
-            
-            <h4>¿Qué es el zIndex y para qué sirve?</h4>
-        
-        </section>
-        
-    </body>
-</html>
+        <h4>¿Cuáles son las diferencias entre los posibles valores de la propiedad position?</h4>
+
+        <h4>¿Cuáles son los valores estándar para la propiedad visibility?</h4>
+
+        <h4>¿Qué es el zIndex y para qué sirve?</h4>
+
+    </section>
+
+</body></html>
