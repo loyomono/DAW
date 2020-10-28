@@ -76,7 +76,7 @@ if (isset($_POST['submit_registro'])) {
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <title>Examen de segundo parcial</title>
 
-    <script type="text/javascript" src='funciones.js'> </script>
+    <script type="text/javascript" src='scripts.js'> </script>
 </head>
 
 <style>
@@ -101,13 +101,7 @@ if (isset($_POST['submit_registro'])) {
                 <div class="blue darken-1 nav-wrapper">
                     <a href="index.php" class="brand-logo"><acronym title="Desarrollo de aplicaciones web y Bases de datos">Segundo parcial: DAW-BD</acronym></a>
                     <ul id="nav-mobile" class="right">
-                        <li>
-                            <form action="Consultas.php">
-                                <button class="btn waves-effect waves-light" type="submit" name="">
-                                    Consultas
-                                </button>
-                            </form>
-                        </li>
+                        <li><a href="consultas.php">Consultas</a></li>
                     </ul>
                 </div>
             </nav>
@@ -170,7 +164,7 @@ if (isset($_POST['submit_registro'])) {
                 </div>
             </div>
 
-            <!-- Zombies -->
+            <!-- TABLA -->
             <table class="highlight">
                 <thead>
                     <tr>
@@ -195,7 +189,7 @@ if (isset($_POST['submit_registro'])) {
         </div>
         <div class="footer-copyright">
             <div class="container">
-                © 2019 Escuela de Ingeniería y Ciencias - Tecnológico de Monterrey en Querétaro.
+                © 2020 Escuela de Ingeniería y Ciencias - Tecnológico de Monterrey en Querétaro.
             </div>
         </div>
     </footer>
